@@ -146,73 +146,6 @@ void check_update_task(void *pvParameter) {
 
 
 
-// void check_update_task(void *pvParameter) {
-	
-// 	while(1) {
-//         // char buf[255];
-//         // strcpy(buf,UPDATE_JSON_URL);
-//         // strcat();
-// 		printf("Looking for a new firmware...\n");
-	
-// 		// configure the esp_http_client
-// 		esp_http_client_config_t config = {
-//         .url = UPDATE_JSON_URL,
-//         .event_handler = _http_event_handler,
-// 		};
-// 		esp_http_client_handle_t client = esp_http_client_init(&config);
-	
-// 		// downloading the json file
-// 		esp_err_t err = esp_http_client_perform(client);
-// 		if(err == ESP_OK) {
-			
-// 			// parse the json file	
-// 			cJSON *json = cJSON_Parse(rcv_buffer);
-// 			if(json == NULL) printf("downloaded file is not a valid json, aborting...\n");
-// 			else {	
-// 				cJSON *version = cJSON_GetObjectItemCaseSensitive(json, "version");
-// 				cJSON *file = cJSON_GetObjectItemCaseSensitive(json, "file");
-				
-// 				// check the version
-// 				if(!cJSON_IsNumber(version)) printf("unable to read new version, aborting...\n");
-// 				else {
-					
-// 					double new_version = version->valuedouble;
-// 					if(new_version > FIRMWARE_VERSION) {
-						
-// 						printf("current firmware version (%.1f) is lower than the available one (%.1f), upgrading...\n", FIRMWARE_VERSION, new_version);
-// 						if(cJSON_IsString(file) && (file->valuestring != NULL)) {
-// 							printf("downloading and installing new firmware (%s)...\n", file->valuestring);
-							
-// 							esp_http_client_config_t ota_client_config = {
-// 								.url = file->valuestring,
-// 							};
-//                             esp_https_ota_config_t ota_config = {
-//                                     .http_config = &config,
-//                             };                            
-// 							esp_err_t ret = esp_https_ota(&ota_config);
-// 							if (ret == ESP_OK) {
-// 								printf("OTA OK, restarting...\n");
-// 								esp_restart();
-// 							} else {
-// 								printf("OTA failed...\n");
-// 							}
-// 						}
-// 						else printf("unable to read the new file name, aborting...\n");
-// 					}
-// 					else printf("current firmware version (%.1f) is greater or equal to the available one (%.1f), nothing to do...\n", FIRMWARE_VERSION, new_version);
-// 				}
-// 			}
-// 		}
-// 		else printf("unable to download the json file, aborting...\n");
-		
-// 		// cleanup
-// 		esp_http_client_cleanup(client);
-		
-// 		printf("\n");
-//         vTaskDelay(30000 / portTICK_PERIOD_MS);
-//     }
-// }
-
 static void print_sha256(const uint8_t *image_hash, const char *label)
 {
     char hash_print[HASH_LEN * 2 + 1];
@@ -265,8 +198,8 @@ void app_main(void)
 
     while(1){
         gpio_set_level(THEPIN,1 );
-        vTaskDelay(200 / portTICK_PERIOD_MS);        
+        vTaskDelay(2000 / portTICK_PERIOD_MS);        
         gpio_set_level(LED1_PIN,0 );
-        vTaskDelay(200 / portTICK_PERIOD_MS);        
+        vTaskDelay(2000 / portTICK_PERIOD_MS);        
     }
 }
