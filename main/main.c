@@ -27,11 +27,21 @@
 #include "esp_ota_ops.h"
 #include "esp_partition.h"
 
+/*
+Looking for a new firmware at https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json?token=1current firmware version (0.8) is lower than the available one (0.9), upgrading...
+downloading and installing new firmware (https://github.com/oyvindrankelarsen/ESP32OTA/raw/main/bin/esp32ota.bin)...
+[0;33mW (51444) esp_https_ota: Continuing with insecure option because CONFIG_ESP_HTTPS_OTA_ALLOW_HTTP is set.[0m
+[0;32mI (60184) esp_https_ota: Starting OTA...[0m
+[0;32mI (60184) esp_https_ota: Writing to partition subtype 16 at offset 0x110000[0m
+[0;31mE (90564) transport_base: esp_tls_conn_read error, errno=No more processes[0m
+[0;33mW (90564) HTTP_CLIENT: esp_transport_read returned:0 and errno:11 [0m
+*/
+
 // https://wokwi.com/projects/377761117596697601
 
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION	0.9
+#define FIRMWARE_VERSION	1.0
 #define UPDATE_JSON_URL		"https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
 
@@ -198,8 +208,8 @@ void app_main(void)
 
     while(1){
         gpio_set_level(THEPIN,1 );
-        vTaskDelay(2000 / portTICK_PERIOD_MS);        
+        vTaskDelay(200 / portTICK_PERIOD_MS);        
         gpio_set_level(LED1_PIN,0 );
-        vTaskDelay(2000 / portTICK_PERIOD_MS);        
+        vTaskDelay(200 / portTICK_PERIOD_MS);        
     }
 }
