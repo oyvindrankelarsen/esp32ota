@@ -41,7 +41,7 @@ downloading and installing new firmware (https://github.com/oyvindrankelarsen/ES
 
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION	1.0
+#define FIRMWARE_VERSION	1.1
 #define UPDATE_JSON_URL		"https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
 
