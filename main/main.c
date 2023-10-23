@@ -40,7 +40,7 @@ static const char *TAG = "mqttwss_example";
 #define LED3_PIN 13
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION 1.6
+#define FIRMWARE_VERSION 1.7
 #define UPDATE_JSON_URL "https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
 #define THEPIN 2
@@ -295,7 +295,7 @@ void app_main(void)
     while (1)
     {
         gpio_set_level(THEPIN, 1);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
+        vTaskDelay(1500 / portTICK_PERIOD_MS);
         gpio_set_level(LED1_PIN, 0);
         vTaskDelay(500 / portTICK_PERIOD_MS);
     }
