@@ -290,13 +290,14 @@ void app_main(void)
     esp_event_loop_create_default();
     mqtt_app_start();
 
-    xTaskCreate(check_update_task, "check_update_task", 8192, NULL, 5, NULL);
+    //xTaskCreate(check_update_task, "check_update_task", 8192, NULL, 5, NULL);
 
     while (1)
     {
-        gpio_set_level(THEPIN, 1);
-        vTaskDelay(1500 / portTICK_PERIOD_MS);
-        gpio_set_level(LED1_PIN, 0);
-        vTaskDelay(500 / portTICK_PERIOD_MS);
+        // gpio_set_level(THEPIN, 1);
+        // vTaskDelay(1500 / portTICK_PERIOD_MS);
+        // gpio_set_level(LED1_PIN, 0);
+        // vTaskDelay(500 / portTICK_PERIOD_MS);
+        vTaskDelay(10000);
     }
 }
