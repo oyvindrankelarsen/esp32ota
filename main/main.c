@@ -40,7 +40,7 @@ static const char *TAG = "mqttwss_example";
 #define LED3_PIN 13
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION 1.4
+#define FIRMWARE_VERSION 1.5
 #define UPDATE_JSON_URL "https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
 #define THEPIN 2
@@ -284,7 +284,7 @@ void app_main(void)
         ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
-    // get_sha256_of_partitions();
+    get_sha256_of_partitions();
 
     connect_wifi();
     esp_event_loop_create_default();
@@ -295,8 +295,8 @@ void app_main(void)
     while (1)
     {
         gpio_set_level(THEPIN, 1);
-        vTaskDelay(2200 / portTICK_PERIOD_MS);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
         gpio_set_level(LED1_PIN, 0);
-        vTaskDelay(2200 / portTICK_PERIOD_MS);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
