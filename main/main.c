@@ -33,18 +33,20 @@ static const char *TAG = "mqttwss_example";
 #define CONFIG_BROKER_URI "mqtt://test.mosquitto.org"
 
 #define TOPIC "oyvindrankelarsen/feeds/testfeed"
-// https://wokwi.com/projects/377761117596697601
+// https://wokwi.com/projects/379395103482020865
+//  https://testclient-cloud.mqtt.cool tcp://test.mosquitto.org:188
 
-#define LED1_PIN 2
-#define LED2_PIN 4
-#define LED3_PIN 13
+#define LED1_PIN 12
+#define LED2_PIN 13
+#define LED3_PIN 4
+#define LED4_PIN 2
 
 #define HASH_LEN 32
 #define FIRMWARE_VERSION 1.9
 #define UPDATE_JSON_URL "https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
-#define THEPIN 2
-
+// #define THEPIN 2
+int ledstate1, ledstate2, ledstate3, ledstate4 = 0;
 // receive buffer
 char rcv_buffer[200];
 static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
@@ -76,23 +78,39 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
         ESP_LOGI(TAG, "MQTT_EVENT_DATA");
         printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
         printf("DATA=%.*s\r\n", event->data_len, event->data);
-        if (strncmp(event->data, "RIGHT", event->data_len) == 0)
+        if (strncmp(event->data, "1", event->data_len) == 0)
+        {
+            ledstate1 = !ledstate1;
+            gpio_set_level(LED1_PIN, ledstate1);
+        }
+        if (strncmp(event->data, "2", event->data_len) == 0)
+        {
+            ledstate2 = !ledstate2;
+            gpio_set_level(LED2_PIN, ledstate2);
+        }
+        if (strncmp(event->data, "3", event->data_len) == 0)
+        {
+            ledstate3 = !ledstate3;
+            gpio_set_level(LED3_PIN, ledstate3);
+        }
+        if (strncmp(event->data, "4", event->data_len) == 0)
+        {
+            ledstate4 = !ledstate4;
+            gpio_set_level(LED4_PIN, ledstate4);
+        }
+        if (strncmp(event->data, "ALLON", event->data_len) == 0)
         {
             gpio_set_level(LED1_PIN, 1);
-            vTaskDelay(3000 / portTICK_PERIOD_MS);
-            gpio_set_level(LED1_PIN, 0);
-        }
-        if (strncmp(event->data, "MIDDLE", event->data_len) == 0)
-        {
             gpio_set_level(LED2_PIN, 1);
-            vTaskDelay(3000 / portTICK_PERIOD_MS);
-            gpio_set_level(LED2_PIN, 0);
-        }
-        if (strncmp(event->data, "LEFT", event->data_len) == 0)
-        {
             gpio_set_level(LED3_PIN, 1);
-            vTaskDelay(1000 / portTICK_PERIOD_MS);
+            gpio_set_level(LED4_PIN, 1);
+        }
+        if (strncmp(event->data, "ALLOFF", event->data_len) == 0)
+        {
+            gpio_set_level(LED1_PIN, 0);
+            gpio_set_level(LED2_PIN, 0);
             gpio_set_level(LED3_PIN, 0);
+            gpio_set_level(LED4_PIN, 0);
         }
         break;
     case MQTT_EVENT_ERROR:
@@ -276,6 +294,9 @@ void app_main(void)
     gpio_set_direction(LED2_PIN, GPIO_MODE_OUTPUT);
     gpio_reset_pin(LED3_PIN);
     gpio_set_direction(LED3_PIN, GPIO_MODE_OUTPUT);
+    gpio_reset_pin(LED4_PIN);
+    gpio_set_direction(LED4_PIN, GPIO_MODE_OUTPUT);
+
     esp_err_t ret = nvs_flash_init();
     ESP_LOGI("CH", "%d ret", ret);
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
@@ -290,14 +311,5 @@ void app_main(void)
     esp_event_loop_create_default();
     mqtt_app_start();
 
-    //xTaskCreate(check_update_task, "check_update_task", 8192, NULL, 5, NULL);
-
-    while (1)
-    {
-        // gpio_set_level(THEPIN, 1);
-        // vTaskDelay(1500 / portTICK_PERIOD_MS);
-        // gpio_set_level(LED1_PIN, 0);
-        // vTaskDelay(500 / portTICK_PERIOD_MS);
-        vTaskDelay(10000);
-    }
+    xTaskCreate(check_update_task, "check_update_task", 8192, NULL, 5, NULL);
 }
