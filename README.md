@@ -19,17 +19,6 @@ The project **esp32ota** contains one source file in C language [main.c](main/ma
 
 ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt` files that provide set of directives and instructions describing the project's source files and targets (executable, library, or both).
 
-Below is short explanation of remaining files in the project folder.
-
-```
-├── CMakeLists.txt
-├── pytest_esp32ota.py      Python script used for automated testing
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-
 For more information on structure and contents of ESP-IDF projects, please refer to Section [Build System](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html) of the ESP-IDF Programming Guide.
 
 First you have to open a ESP-IDF terminal and run idf.py uf2 to get the two partitions needed for OTA.
@@ -46,5 +35,3 @@ Download a video showing the installation, running and OTA updating of the softw
 ## Warning
 
 OTA updates are allowed over HTTP, this should only be used for testing purposes.
-
-
