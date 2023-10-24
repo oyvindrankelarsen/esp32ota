@@ -6,7 +6,7 @@
 This project uses the MQTT-protocol to control 4 LEDs connected to an ESP32 board.
 [wokwi project](https://wokwi.com/projects/379464083899436033)
 
-![Alt text](wokwi-1.jpg)
+![wokwi](wokwi-1.jpg)
 
 It also checks for a new firmware version and, if found, installs it OTA (over the air). 
 
@@ -22,7 +22,7 @@ Then when you have a new version you update the version number in `main.c` and i
 
 To control the LEDs through the MQTT-protocol I use https://testclient-cloud.mqtt.cool. Select `tcp://test.mosquitto.org:1883` as broker. Then under Publish select the destination of the message to `oyvindrankelarsen/feeds/testfeed`.
 
-![Alt text](mqtt-1.jpg)
+![MQTT](mqtt-1.jpg)
 
 Then you can publish 1,2,3 and 4 respectively to flip one of the leds on and off.
 You can also publish ALLON to turn on all LEDs and ALLOFF to turn off all the LEDs.
