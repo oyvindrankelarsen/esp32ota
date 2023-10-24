@@ -3,9 +3,10 @@
 
 # ESP32 MQTT + OTA
 
-This project uses MQTT to control 4 LEDs.
+This project uses MQTT to control 4 LEDs connected to an ESP32 board.
+[wokwi project](https://wokwi.com/projects/379464083899436033)
 
-It also checks for a new firmware version and , if found, installs it over the air (OTA). 
+It also checks for a new firmware version and, if found, installs it over the air (OTA). 
 
 ## How to use example
 
@@ -13,7 +14,7 @@ I use the ESP-IDF Visual Studio Code Extension by Espressif Systems.
 
 [ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
 
-## Example folder contents
+## ESP-IDF project
 
 The project **esp32ota** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
 

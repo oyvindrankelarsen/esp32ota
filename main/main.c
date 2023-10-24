@@ -33,7 +33,7 @@ static const char *TAG = "mqttwss_example";
 #define CONFIG_BROKER_URI "mqtt://test.mosquitto.org"
 
 #define TOPIC "oyvindrankelarsen/feeds/testfeed"
-// https://wokwi.com/projects/379395103482020865
+// https://wokwi.com/projects/379464083899436033
 / https : // testclient-cloud.mqtt.cool tcp://test.mosquitto.org:1883
 
 #define LED1_PIN 12
