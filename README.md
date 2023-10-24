@@ -16,7 +16,7 @@ I use the ESP-IDF Visual Studio Code Extension by Espressif Systems.
 
 [ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
 
-First you have to open a ESP-IDF terminal and run `idf.py uf2` to get the two partitions needed for OTA.
+First you have to open a ESP-IDF terminal and run `idf.py uf2` to get the two partitions needed for OTA. Press F1 in wokwi to upload `uf2.bin`.
 
 Then when you have a new version you update the version number in `main.c` and in `firmware.json`. After you build the project you move the `esp32ota.bin` to the bin folder and when you are ready to update you commit `firmware.json` to github.
 
