@@ -41,20 +41,10 @@ To control the LEDs through the MQTT-protocol I use https://testclient-cloud.mqt
 Then you can publish 1,2,3 and 4 respectively to flip one the leds on and off.
 You can also publish ALLON to turn on all LEDs and ALLOFF to turn off the LEDs.
 
-You can also download a video showing the installation, running and OTA updating of the software here: [video.mp4](https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/video.mp4)
+Download a video showing the installation, running and OTA updating of the software here: [video.mp4](https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/video.mp4)
 
-## Troubleshooting
+## Warning
 
-* Program upload failure
+OTA updates are allowed over HTTP, this should only be used for testing purposes.
 
-    * Hardware connection is not correct: run `idf.py -p PORT monitor`, and reboot your board to see if there are any output logs.
-    * The baud rate for downloading is too high: lower your baud rate in the `menuconfig` menu, and try again.
 
-## Technical support and feedback
-
-Please use the following feedback channels:
-
-* For technical queries, go to the [esp32.com](https://esp32.com/) forum
-* For a feature request or bug report, create a [GitHub issue](https://github.com/espressif/esp-idf/issues)
-
-We will get back to you as soon as possible.
