@@ -34,7 +34,7 @@ static const char *TAG = "mqttwss_example";
 
 #define TOPIC "oyvindrankelarsen/feeds/testfeed"
 // https://wokwi.com/projects/379395103482020865
-//  https://testclient-cloud.mqtt.cool tcp://test.mosquitto.org:1883
+/ https : // testclient-cloud.mqtt.cool tcp://test.mosquitto.org:1883
 
 #define LED1_PIN 12
 #define LED2_PIN 13
@@ -45,8 +45,9 @@ static const char *TAG = "mqttwss_example";
 #define FIRMWARE_VERSION 1.9
 #define UPDATE_JSON_URL "https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
-// #define THEPIN 2
-int ledstate1, ledstate2, ledstate3, ledstate4 = 0;
+          // #define THEPIN 2
+          int ledstate1,
+    ledstate2, ledstate3, ledstate4 = 0;
 // receive buffer
 char rcv_buffer[200];
 static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
