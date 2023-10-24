@@ -26,7 +26,7 @@ First you have to open a ESP-IDF terminal and run idf.py uf2 to get the two part
 
 Then when you have a new version you update the version number in main.c and in firmware.json. After you build the project you move the esp32ota.bin to the bin folder and when you are ready to update you commit firmware.json to github.
 
-To control the LEDs through the MQTT-protocol I use https://testclient-cloud.mqtt.cool. Select tcp://test.mosquitto.org:1883 as broker. Then under Publish select the destination of the message to `oyvindrankelarsen/feeds/testfeed`.
+To control the LEDs through the MQTT-protocol I use https://testclient-cloud.mqtt.cool. Select `tcp://test.mosquitto.org:1883` as broker. Then under Publish select the destination of the message to `oyvindrankelarsen/feeds/testfeed`.
 
 Then you can publish 1,2,3 and 4 respectively to flip one of the leds on and off.
 You can also publish ALLON to turn on all LEDs and ALLOFF to turn off all the LEDs.
