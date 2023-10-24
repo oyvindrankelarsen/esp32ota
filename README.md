@@ -1,20 +1,18 @@
 | Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-H2 | ESP32-S2 | ESP32-S3 |
 | ----------------- | ----- | -------- | -------- | -------- | -------- | -------- | -------- |
 
-# Hello World Example
+# ESP32 MQTT + OTA
 
-Starts a FreeRTOS task to print "Hello World".
+This project uses MQTT to control 4 LEDs.
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+It also checks for a new firmware version and , if found, installs it. 
 
 ## How to use example
 
-Follow detailed instructions provided specifically for this example.
+I use the ESP-IDF Visual Studio Code Extension by Espressif Systems.
 
-Select the instructions depending on Espressif chip installed on your development board:
+[ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
 
-- [ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
-- [ESP32-S2 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/index.html)
 
 
 ## Example folder contents

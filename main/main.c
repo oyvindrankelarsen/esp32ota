@@ -34,7 +34,7 @@ static const char *TAG = "mqttwss_example";
 
 #define TOPIC "oyvindrankelarsen/feeds/testfeed"
 // https://wokwi.com/projects/379395103482020865
-//  https://testclient-cloud.mqtt.cool tcp://test.mosquitto.org:188
+//  https://testclient-cloud.mqtt.cool tcp://test.mosquitto.org:1883
 
 #define LED1_PIN 12
 #define LED2_PIN 13
