@@ -42,7 +42,7 @@ static const char *TAG = "mqttwss_example";
 #define LED4_PIN 2
 
 #define HASH_LEN 32
-#define FIRMWARE_VERSION 1.9
+#define FIRMWARE_VERSION 2.0
 #define UPDATE_JSON_URL "https://github.com/oyvindrankelarsen/esp32ota/raw/main/bin/firmware.json"
 
           // #define THEPIN 2
